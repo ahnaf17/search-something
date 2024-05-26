@@ -1,46 +1,94 @@
-# Getting Started with Create React App
+### Task 1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Run the following commands to start the project
+- `npm install`
+- `npm start`
 
-## Available Scripts
+### Run the tests
+- `npm test`
 
-In the project directory, you can run:
+### Things I have added additionally
+- Introduced pattern for everything to achieve clean/maintainable code and allow easy scalability. I haven't seen use of redux for the current requirements, so didn't setup it up.
+- Support for different screen sizes.
+- Added timeout on API calls in case the server takes too long to respond.
+- Loading and error handling on API call.
+- Minimum 3 characters search to reduce size of database query and allow faster search.
 
-### `npm start`
+### Some suggestion for future improvements
+- Some kinda cache can be introduced to optimize search and prevent excessive API calls.
+- Add pagination on seach results. Data can be requested in chucks as user scroll down the search results.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Task 2
 
-### `npm test`
+The test cases as follows:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App component
 
-### `npm run build`
+1. Renders title correctly.
+- check if "Shop the Collection" is displayed on the screen
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Carousel component   
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Fetches data successfully and carousel renders correctly. 
+- mock the api call to return mock data
+- check if the mock data is displayed on the screen correctly
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Displays error message on API fetch failure.
+- mock the api call to return a rejected response 
+- check for error message based on how the error is handled during implementation
 
-### `npm run eject`
+3. Displays loading indicator while fetching data.
+- mock the api call to return a response with a delay
+- check if the loading spinner is present on the screen.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. Carousel navigation to the left works correctly.
+- trigger a click on the left buttom
+- check if the screen has new set of products displayed
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Carousel navigation to the right works correctly.
+- trigger a click on the right buttom 
+- check if the screen has new set of products displayed
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. Carousel displays four products at a time.
+- check if the products displayed on the Carousel is of lengh four.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+6. Carousel does not navigate when the total product count is less or equal to four.
+- mock data with 2 products
+- left and right button of the Carousel shouldn't be displayed.
 
-## Learn More
+## Product component
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Product displays correct data
+- pass image, title, price info in the mock data
+- check if the corresponding data are displayed on the screen in correct format.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Product can be marked as favourite
+- Assuming the element representing the "heart" is a clickable image, check if that image is present on the screen.
+
+3. Display discount text for discounted products
+- pass discount info in the mock data 
+- check if "GET $10AUD OFF" is present on the screen
+
+4. No discount text displayed for non-discounted products
+- pass empty discount info in the mock data 
+- discount text shouldn't be displayed on the screen
+
+5. Favourited/Liked product is marked with red heart
+- pass favourite info in the mock data 
+- check if the image representing the "favourited heart" is present - assuming the element representing the "favourited heart" is an image. 
+
+6. Displays available colors of a product
+- pass two available colors in the mock data
+- check if the elements representing available colors are displayed on the screen 
+- check if the elements representing available colors is of length two.
+
+7. Truncates when more than three colours are available for a product
+- pass five available colors in the mock data
+- check if the elements representing available colours is of length three
+- check if "+2 more" is displayed on the screen
+
+8. No colour info displayed when the product comes in single color.
+- pass one available color in the mock data
+- the elements representing the available colors shouldn't be displayed.
+
