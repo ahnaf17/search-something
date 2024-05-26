@@ -86,10 +86,14 @@ The test cases as follows:
 
 7. Truncates when more than three colours are available for a product
 - pass five available colors in the mock data
-- check if the elements representing available colours is of length three
+- check if the elements representing available colors is of length three
 - check if "+2 more" is displayed on the screen
 
-8. No colour info displayed when the product comes in single color.
+8. Product image changes when the corresponding color is clicked
+- assuming there is a mapping between the available colors and products images in the data structure
+- trigger a click on the color and check if the corresponsing image is displayed.
+
+9. No colour info displayed when the product comes in single color.
 - pass one available color in the mock data
 - the elements representing the available colors shouldn't be displayed.
 
