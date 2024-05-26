@@ -65,6 +65,7 @@ The test cases as follows:
 
 2. Product can be marked as favourite
 - Assuming the element representing the "heart" is a clickable image, check if that image is present on the screen.
+- trigger a click and check if for the image that represents liked product (for example, red heart) is displayed. If this action involves an api call during implementation, api needs to be mocked
 
 3. Display discount text for discounted products
 - pass discount info in the mock data 
