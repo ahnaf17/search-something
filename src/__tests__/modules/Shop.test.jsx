@@ -4,7 +4,6 @@ import Shop from 'modules/Shop';
 import searchProduct from 'lib/rest/SearchProduct';
 import { jest } from '@jest/globals';
 
-
 jest.mock('lib/rest/SearchProduct');
 
 const mockProducts = [
@@ -16,6 +15,10 @@ describe('Shop Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     jest.useFakeTimers(); 
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   test('renders search bar component', () => {

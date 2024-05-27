@@ -46,14 +46,14 @@ The test cases as follows:
 - trigger a click on the left buttom
 - check if the screen has new set of products displayed
 
-4. Carousel navigation to the right works correctly.
+5. Carousel navigation to the right works correctly.
 - trigger a click on the right buttom 
 - check if the screen has new set of products displayed
 
-5. Carousel displays four products at a time.
+6. Carousel displays four products at a time.
 - check if the products displayed on the Carousel is of lengh four.
 
-6. Carousel does not navigate when the total product count is less or equal to four.
+7. Carousel does not navigate when the total product count is less or equal to four.
 - mock data with 2 products
 - left and right button of the Carousel shouldn't be displayed.
 
