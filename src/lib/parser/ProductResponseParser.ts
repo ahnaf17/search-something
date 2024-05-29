@@ -1,4 +1,4 @@
-const productResponseParser = (response:any) => ({
+const productResponseParser = (response: any) => ({
   id: response.id,
   title: response.title,
   price: response.price,

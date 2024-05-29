@@ -14,7 +14,7 @@ const mockProducts = [
 describe('Shop Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    jest.useFakeTimers(); 
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
@@ -26,7 +26,6 @@ describe('Shop Component', () => {
     expect(screen.getByPlaceholderText('Search Title')).toBeInTheDocument();
   });
 
-  
   test('displays loading spinner and fetches products on valid input', async () => {
     searchProduct.mockImplementation(() => {
       return new Promise((resolve) => {
@@ -35,7 +34,7 @@ describe('Shop Component', () => {
         }, 1000);
       });
     });
-    
+
     render(<Shop />);
     const input = screen.getByPlaceholderText('Search Title');
     fireEvent.change(input, { target: { value: 'abc' } });
@@ -44,7 +43,7 @@ describe('Shop Component', () => {
     await waitFor(() => {
       expect(screen.getByText('Loading ...')).toBeInTheDocument();
     });
-    
+
     jest.advanceTimersByTime(2000);
     await waitFor(() => {
       expect(screen.getByText('Product 1')).toBeInTheDocument();
@@ -53,16 +52,18 @@ describe('Shop Component', () => {
       expect(screen.getByText('Product 2')).toBeInTheDocument();
     });
   });
-  
+
   test('displays warning message for input less than 3 characters', async () => {
     render(<Shop />);
     const input = screen.getByPlaceholderText('Search Title');
-    
+
     fireEvent.change(input, { target: { value: 'ab' } });
     jest.advanceTimersByTime(1000);
 
     await waitFor(() => {
-      expect(screen.getByText('Atleast 3 characters required to search')).toBeInTheDocument();
+      expect(
+        screen.getByText('Atleast 3 characters required to search'),
+      ).toBeInTheDocument();
     });
   });
 
@@ -86,7 +87,9 @@ describe('Shop Component', () => {
 
     jest.advanceTimersByTime(2000);
     await waitFor(() => {
-      expect(screen.getByText('No product found from this search')).toBeInTheDocument();
+      expect(
+        screen.getByText('No product found from this search'),
+      ).toBeInTheDocument();
     });
   });
 
@@ -116,7 +119,7 @@ describe('Shop Component', () => {
 
   test('debounce function calls searchProduct once after multiple triggers', async () => {
     searchProduct.mockResolvedValueOnce(mockProducts);
-    
+
     render(<Shop />);
     const input = screen.getByPlaceholderText('Search Title');
 
